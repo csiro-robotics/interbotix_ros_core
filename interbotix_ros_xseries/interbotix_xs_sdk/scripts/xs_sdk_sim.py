@@ -51,7 +51,7 @@ import numpy as np
 import rclpy
 from rclpy.constants import S_TO_NS
 from rclpy.duration import Duration
-from rclpy.executors import MultiThreadedExecutor
+from rclpy.executors import SingleThreadedExecutor
 from rclpy.logging import get_logger
 from rclpy.node import Node
 from sensor_msgs.msg import JointState
@@ -831,7 +831,7 @@ class InterbotixRobotXS(Node):
 
 def main(args=None):
     rclpy.init(args=args)
-    executor = MultiThreadedExecutor()
+    executor = SingleThreadedExecutor()
     try:
         node = InterbotixRobotXS()
         executor.add_node(node)
