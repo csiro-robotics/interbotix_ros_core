@@ -36,7 +36,7 @@ int main(int argc, char ** argv)
   bool success = true;
   auto node = std::make_shared<interbotix_xs::InterbotixRobotXS>(success);
   if (success) {
-    rclcpp::executors::MultiThreadedExecutor exec;
+    rclcpp::executors::SingleThreadedExecutor exec;
     exec.add_node(node);
     exec.spin();
   } else {
